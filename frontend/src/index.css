@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #0f1117;
+  color: #e0e6f0;
+  font-family: system-ui, sans-serif;
+  overflow: hidden;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+@keyframes flow {
+  0%   { stroke-dashoffset: 24; }
+  100% { stroke-dashoffset: 0; }
+}
+@keyframes flowReverse {
+  0%   { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 24; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+.pulse { animation: pulse 1.5s ease-in-out infinite; }
+.flow-anim { animation: flow 0.8s linear infinite; }
+.flow-reverse { animation: flowReverse 0.8s linear infinite; }
+.fade-in { animation: fadeIn 0.3s ease forwards; }
+
+.skeleton {
+  background: linear-gradient(90deg, #1a2235 25%, #222c40 50%, #1a2235 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 6px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #2a3045; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #3d5070; }
+
+/* Leaflet dark map override */
+.leaflet-container { background: #0d1320 !important; }
+.leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(0.85) saturate(0.7); }
